@@ -9,6 +9,17 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        tcg: {
+          black: '#0A0A0A',
+          white: '#FFFFFF',
+          card: '#1A1A1A',
+          border: '#2A2A2A',
+          text: '#A0A0A0',
+          muted: '#555555',
+          gold: '#F5C842',
+          green: '#00FF85',
+          red: '#FF4545',
+        },
         racing: {
           primary: '#0A0A0A',
           surface: '#111111',

@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { Suspense, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import { ACCOUNT_SIZES, DRAWDOWN_TYPES, ADDONS, getPrice } from '@/lib/pricing'
@@ -16,7 +16,7 @@ import {
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
 
-export default function OrderPage() {
+function OrderPageContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const supabase = createClient()
@@ -186,5 +186,19 @@ export default function OrderPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function OrderPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-racing-primary flex items-center justify-center">
+          <Loader2 className="animate-spin text-racing-green" size={32} aria-label="Loading" />
+        </div>
+      }
+    >
+      <OrderPageContent />
+    </Suspense>
   )
 }
