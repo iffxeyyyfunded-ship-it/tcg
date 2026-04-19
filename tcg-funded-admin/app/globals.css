@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=JetBrains+Mono:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  --bg-primary: #0A0A0A;
+  --bg-secondary: #141414;
+  --bg-card: #1A1A1A;
+  --border: #2A2A2A;
+  --text-primary: #FFFFFF;
+  --text-secondary: #A0A0A0;
+  --text-muted: #555555;
+  --accent-gold: #F5C842;
+  --accent-green: #00FF85;
+  --accent-red: #FF4545;
+  --accent-blue: #4A9EFF;
+}
+
+@layer base {
+  * {
+    @apply border-tcg-border;
+    box-sizing: border-box;
+  }
+  
+  body {
+    @apply bg-tcg-black text-tcg-white;
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    @apply tracking-wide;
+  }
+}
+
+@layer components {
+  .section {
+    @apply py-24 md:py-32;
+  }
+
+  .container {
+    @apply max-w-7xl mx-auto px-6;
+  }
+
+  .gold-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-tcg-gold to-[#f7c05a];
+    filter: drop-shadow(0 0 10px rgba(245, 200, 66, 0.3));
+  }
+
+  .text-glow-gold {
+    text-shadow: 0 0 20px rgba(245, 200, 66, 0.4);
+  }
+
+  .card-glass {
+    @apply bg-tcg-card/80 backdrop-blur-md border border-tcg-border;
+  }
+
+  .btn-gold {
+    @apply bg-tcg-gold text-tcg-black font-black uppercase tracking-widest transition-all duration-300 hover:bg-[#FFD700] hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_20px_rgba(245,200,66,0.2)];
+  }
+
+  .btn-ghost {
+    @apply border border-tcg-gold/30 text-tcg-gold font-bold uppercase tracking-widest transition-all duration-300 hover:bg-tcg-gold/10 hover:border-tcg-gold;
+  }
+
+  .gold-border-gradient {
+    position: relative;
+    background: linear-gradient(#1A1A1A, #1A1A1A) padding-box,
+                linear-gradient(135deg, rgba(245,200,66,0.3) 0%, transparent 50%, rgba(245,200,66,0.1) 100%) border-box;
+    border: 1px solid transparent;
+  }
+
+  .noise {
+    position: relative;
+  }
+  
+  .noise::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-tcg-black;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-tcg-border rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-tcg-muted;
+}
+
+/* Ticker Animation Custom */
+.ticker-wrap {
+  width: 100%;
+  overflow: hidden;
+}
+
+.ticker-inner {
+  display: flex;
+  width: fit-content;
+  animation: ticker 30s linear infinite;
+}
+
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Animations from Master Prompt ideas */
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
