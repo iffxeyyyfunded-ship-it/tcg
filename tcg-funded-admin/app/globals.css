@@ -3,6 +3,19 @@
 @import "tailwindcss";
 @config "../tailwind.config.ts";
 
+/* TCG palette: defined here so @apply in this file always resolves (Tailwind v4). */
+@theme {
+  --color-tcg-black: #0a0a0a;
+  --color-tcg-white: #ffffff;
+  --color-tcg-card: #1a1a1a;
+  --color-tcg-border: #2a2a2a;
+  --color-tcg-text: #a0a0a0;
+  --color-tcg-muted: #555555;
+  --color-tcg-gold: #f5c842;
+  --color-tcg-green: #00ff85;
+  --color-tcg-red: #ff4545;
+}
+
 :root {
   --font-display: 'Space Grotesk', sans-serif;
   --font-body: 'DM Sans', sans-serif;
